@@ -66,11 +66,20 @@ public class TransferMoneyServiceTest {
     }
 
     @Test
-    public void testTransferWithUserNotFound() {
+    public void testTransferWithUserFromNotFound() {
         //настройка мокито таким образом, чтобы он вернул userFrom - empty
         when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
         //попытка перевода от empty юзера ко второму юзеру -> выброс Runtime Exception
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
+    }
+
+    @Test
+    public void testTransferWithUserToNotFound() {
+        //настройка мокито таким образом, чтобы он вернул userFrom - empty
+        when(userRepository.findById(2L)).thenReturn(Optional.empty());
+
+        //попытка перевода от not empty юзера коempty юзеру -> выброс Runtime Exception
         assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
     }
 

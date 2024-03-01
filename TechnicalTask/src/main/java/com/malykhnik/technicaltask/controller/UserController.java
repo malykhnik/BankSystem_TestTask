@@ -7,6 +7,8 @@ import com.malykhnik.technicaltask.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,6 +18,8 @@ import java.util.Optional;
 @RequestMapping("/api/users")
 @AllArgsConstructor
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
     private final BalanceService balanceService;
@@ -36,6 +40,7 @@ public class UserController {
         }
         //не даем создать юзера без телефона и емейла
         if (user.getEmail() == null && user.getPhone() == null) {
+            logger.error("email and phone should not be null together!");
             throw new RuntimeException("email and phone should be not null");
         }
 
@@ -46,6 +51,8 @@ public class UserController {
         BankAccount bankAccount = new BankAccount();
         user.setBankAccount(bankAccount);
         bankAccount.setBalance(user.getTopBalance());
+
+        logger.info("info about new user: {}", user);
 
         return userService.saveUser(user);
     }
