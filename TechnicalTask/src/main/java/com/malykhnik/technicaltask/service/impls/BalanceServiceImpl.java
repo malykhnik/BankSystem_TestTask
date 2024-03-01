@@ -1,6 +1,5 @@
 package com.malykhnik.technicaltask.service.impls;
 
-import com.malykhnik.technicaltask.controller.TransferController;
 import com.malykhnik.technicaltask.model.BankAccount;
 import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.repository.BankAccountRepository;
@@ -18,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class BalanceServiceImpl implements BalanceService {
 
-    private final double eps = 0.001;
     private static final Logger logger = LoggerFactory.getLogger(BalanceServiceImpl.class);
 
     private final BankAccountRepository bankAccountRepository;

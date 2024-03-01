@@ -1,6 +1,5 @@
 package com.malykhnik.technicaltask.service.impls;
 
-import com.malykhnik.technicaltask.controller.TransferController;
 import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.repository.BankAccountRepository;
 import com.malykhnik.technicaltask.repository.UserRepository;

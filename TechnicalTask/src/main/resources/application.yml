@@ -13,6 +13,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              create-target: C:\Users\shere\IdeaProjects\TechnicalTask\src\main\resources\sql_scripts\createTables.sql
   security:
     user:
       name: admin
