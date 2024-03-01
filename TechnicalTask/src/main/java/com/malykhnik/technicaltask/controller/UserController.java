@@ -4,11 +4,14 @@ import com.malykhnik.technicaltask.model.BankAccount;
 import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.service.BalanceService;
 import com.malykhnik.technicaltask.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@Tag(name = "user_controller")
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
@@ -17,6 +20,12 @@ public class UserController {
     private final UserService userService;
     private final BalanceService balanceService;
 
+    @Operation(
+            summary="создает нового пользователя в БД",
+            description = "получает объект User, проверяет, чтобы с такими email, phone, username не было юзеров в БД" +
+                    "и проверяет, что баланс не отрицательный. Далее проверяет, что не были переданы пустые телефон и емейл" +
+                    "потом присваивает все поля к объектам и отсылает объект в севрис"
+    )
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
         if (userService.findByEmail(user.getEmail()) != null ||
