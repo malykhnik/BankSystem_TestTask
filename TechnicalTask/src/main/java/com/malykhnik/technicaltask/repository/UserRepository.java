@@ -10,15 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    void deleteById(Long id);
 
     User findByEmail(String email);
 
     User findByPhone(String phone);
 
     User findByUsername(String username);
-
-    User findUserById(Long id);
 
     //выбираем юзеров, чья дата рождения больше, чем переданная в запросе
     @Query("SELECT u FROM User u WHERE u.dateOfBirth > :birthdate")

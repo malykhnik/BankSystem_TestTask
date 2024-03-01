@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserById(Long id) {
-        return userRepository.findUserById(id);
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
     @Override
     public List<User> getUsersByBirthdayGreaterThan(Date dayOfBirthday) {
