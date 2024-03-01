@@ -10,4 +10,5 @@ class TechnicalTaskApplicationTests {
     void contextLoads() {
     }
 
+
 }
