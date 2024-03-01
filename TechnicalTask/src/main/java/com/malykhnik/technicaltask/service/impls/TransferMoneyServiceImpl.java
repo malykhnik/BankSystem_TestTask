@@ -7,6 +7,7 @@ import com.malykhnik.technicaltask.service.TransferMoneyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @AllArgsConstructor
@@ -16,7 +17,10 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
     private final BankAccountRepository bankAccountRepository;
     @Override
     @Transactional
-    public void transfer(Long userFromId, Long UserToId, double money) {
+    public void transfer(Long userFromId, Long UserToId, Double money) {
+        if (userFromId == null || UserToId == null || money == null) {
+            throw new RuntimeException("One transfer parametr is null!!!");
+        }
         User userFrom = userRepository.findById(userFromId).orElseThrow(() -> new RuntimeException("User not found"));
         User userTo = userRepository.findById(UserToId).orElseThrow(() -> new RuntimeException("User not found"));
 

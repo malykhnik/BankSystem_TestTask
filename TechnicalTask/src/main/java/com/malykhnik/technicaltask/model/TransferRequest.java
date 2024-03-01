@@ -8,5 +8,5 @@ import lombok.Data;
 public class TransferRequest {
     private Long userFromId;
     private Long userToId;
-    private double money;
+    private Double money;
 }
