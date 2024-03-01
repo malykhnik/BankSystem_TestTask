@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u WHERE u.dateOfBirth > :birthdate")
     List<User> findByBirthDateGreaterThan(@Param("birthdate") Date birthdate);
 
-    //выбираем юзера, по 100% сходству phone
+    //выбираем юзера по 100% сходству phone
     @Query("SELECT u FROM User u WHERE u.phone = :phone")
     User findUserByPhone(@Param("phone") String phone);
 

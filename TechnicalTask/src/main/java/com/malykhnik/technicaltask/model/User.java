@@ -34,7 +34,8 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
-    private int topBalance;
+    @Column(name = "top_balance", nullable = false)
+    private double topBalance;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bank_account_id")

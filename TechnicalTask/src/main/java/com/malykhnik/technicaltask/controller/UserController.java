@@ -2,6 +2,7 @@ package com.malykhnik.technicaltask.controller;
 
 import com.malykhnik.technicaltask.model.BankAccount;
 import com.malykhnik.technicaltask.model.User;
+import com.malykhnik.technicaltask.service.BalanceService;
 import com.malykhnik.technicaltask.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final BalanceService balanceService;
 
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
@@ -35,6 +37,7 @@ public class UserController {
         BankAccount bankAccount = new BankAccount();
         user.setBankAccount(bankAccount);
         bankAccount.setBalance(user.getTopBalance());
+
         return userService.saveUser(user);
     }
 
