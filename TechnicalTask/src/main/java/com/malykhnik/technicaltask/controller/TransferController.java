@@ -5,6 +5,7 @@ import com.malykhnik.technicaltask.model.TransferRequest;
 import com.malykhnik.technicaltask.service.TransferMoneyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,7 @@ public class TransferController {
             description = "баланс пользователя не может стать меньше 0 - проверяет в сервисе"
     )
     @PostMapping("/transfer")
-    public TransferRequest transferFromTo(@RequestBody TransferRequest transferRequest) {
+    public TransferRequest transferFromTo(@Valid @RequestBody TransferRequest transferRequest) {
         logger.info("Received transfer request: {}", transferRequest);
 
         transferMoneyService.transfer(transferRequest.getUserFromId(), transferRequest.getUserToId(), transferRequest.getMoney());

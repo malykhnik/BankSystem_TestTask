@@ -4,6 +4,7 @@ import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.repository.BankAccountRepository;
 import com.malykhnik.technicaltask.repository.UserRepository;
 import com.malykhnik.technicaltask.service.TransferMoneyService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +24,6 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
     public void transfer(Long userFromId, Long UserToId, Double money) {
         logger.info("transfer from {} to {} amount = {}", userRepository.findById(userFromId),
                 userRepository.findById(UserToId), money);
-        if (userFromId == null || UserToId == null || money == null) {
-            logger.error("One transfer parametr is null!!!");
-            throw new RuntimeException("One transfer parametr is null!!!");
-        }
         User userFrom = userRepository.findById(userFromId).orElseThrow(() -> new RuntimeException("User not found"));
         User userTo = userRepository.findById(UserToId).orElseThrow(() -> new RuntimeException("User not found"));
 
