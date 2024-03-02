@@ -22,7 +22,6 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
-    private final BalanceService balanceService;
 
     @Operation(
             summary="создает нового пользователя в БД",

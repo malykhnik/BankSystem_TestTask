@@ -4,6 +4,9 @@ import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.repository.UserRepository;
 import com.malykhnik.technicaltask.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,6 +17,19 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
+    @Override
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) {
+                if (userRepository.findByUsername(username) == null) {
+                    throw new UsernameNotFoundException("User with " + username + " username not found");
+                }
+                return userRepository.findByUsername(username);
+            }
+        };
+    }
 
     @Override
     public User saveUser(User user) {

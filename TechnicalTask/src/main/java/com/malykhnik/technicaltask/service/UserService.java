@@ -1,11 +1,13 @@
 package com.malykhnik.technicaltask.service;
 
 import com.malykhnik.technicaltask.model.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Date;
 import java.util.List;
 
 public interface UserService {
+    UserDetailsService userDetailsService();
     User saveUser(User user);
 
     User findByEmail(String email);

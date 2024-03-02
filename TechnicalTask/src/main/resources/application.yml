@@ -22,3 +22,6 @@ spring:
     user:
       name: admin
       password: admin
+  token:
+    signing:
+      key: 10704f7e9616445f9c5ebd05e53adac9qgagasgaasdf
