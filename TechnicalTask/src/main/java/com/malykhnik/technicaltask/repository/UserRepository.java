@@ -18,11 +18,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     //выбираем юзеров, чья дата рождения больше, чем переданная в запросе
-    @Query("SELECT u FROM User u WHERE u.dateOfBirth > :birthdate")
+    @Query("SELECT u FROM User u WHERE u.dateOfBirth > :birthdate ORDER BY u.dateOfBirth")
     List<User> findByBirthDateGreaterThan(@Param("birthdate") Date birthdate);
 
     //выбираем юзера по 100% сходству phone
-    @Query("SELECT u FROM User u WHERE u.phone = :phone")
+    @Query("SELECT u FROM User u WHERE u.phone = :phone" )
     User findUserByPhone(@Param("phone") String phone);
 
     //выбираем юзероа по формату ‘{text-from-request-param}%’
