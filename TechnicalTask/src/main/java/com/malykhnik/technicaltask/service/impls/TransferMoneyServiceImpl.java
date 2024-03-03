@@ -4,7 +4,6 @@ import com.malykhnik.technicaltask.model.User;
 import com.malykhnik.technicaltask.repository.BankAccountRepository;
 import com.malykhnik.technicaltask.repository.UserRepository;
 import com.malykhnik.technicaltask.service.TransferMoneyService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

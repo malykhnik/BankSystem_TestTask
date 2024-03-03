@@ -20,18 +20,24 @@ import static org.mockito.Mockito.when;
 public class TransferMoneyServiceTest {
     @Mock
     private UserRepository userRepository;
+    @Mock
+    private BankAccountRepository bankAccountRepository;
 
     @InjectMocks
     private TransferMoneyServiceImpl transferMoneyService;
 
+    @Mock
     private User userFrom;
+    @Mock
     private User userTo;
+    @Mock
     private BankAccount bankAccountFrom;
+    @Mock
     private BankAccount bankAccountTo;
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         userFrom = new User();
         userTo = new User();
         bankAccountFrom = new BankAccount();
@@ -63,6 +69,17 @@ public class TransferMoneyServiceTest {
         when(userRepository.findById(1L)).thenReturn(Optional.of(userFrom));
 
         assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
+    }
+
+    @Test
+    public void testTransferWithMoneyLessThen0() {
+        bankAccountFrom.setBalance(50.0);
+        userFrom.setBankAccount(bankAccountFrom);
+
+        //настройка мокито таким образом, чтобы он вернул userFrom не empty
+        when(userRepository.findById(1L)).thenReturn(Optional.of(userFrom));
+
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, -20.0));
     }
 
     @Test

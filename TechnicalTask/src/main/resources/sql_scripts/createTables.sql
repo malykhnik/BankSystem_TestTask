@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS bank_accounts
+(
+    id      SERIAL PRIMARY KEY,
+    balance REAL   NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS users
 (
     id              SERIAL PRIMARY KEY,
@@ -10,10 +16,4 @@ CREATE TABLE IF NOT EXISTS users
     top_balance     REAL         NOT NULL,
     bank_account_id BIGINT,
     FOREIGN KEY (bank_account_id) REFERENCES bank_accounts(id) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS bank_accounts
-(
-    id      SERIAL PRIMARY KEY,
-    balance REAL   NOT NULL
 );
