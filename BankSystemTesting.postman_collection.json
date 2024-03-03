@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "b9579dbe-296e-4b4d-8075-c39f0a7f3974",
+		"name": "BankSystemTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32954070"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/users/update/1?phone=+7941281251",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users/update/1?phone=+7941281251",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"update",
+						"1"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "+7941281251"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/users/updateEmail/1?email={{$randomEmail}}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users/updateEmail/1?email={{$randomEmail}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"updateEmail",
+						"1"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{$randomEmail}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/users/searchByPhone?phone=",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/security_api/users/searchByPhone?phone=846-623-8131",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"users",
+						"searchByPhone"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "846-623-8131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNYW51ZWxhOTkiLCJpYXQiOjE3MDk0NTY2MTYsImV4cCI6MTcwOTQ1ODA1Nn0.x2iw0rodHJ_UCRNgS30ESCRu1dQFClAbiJEK4ORj1-U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userFromId\": 1,\r\n  \"userToId\": 2,\r\n  \"money\": 400.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/security_api/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/users/delete/1?type=email",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/security_api/users/delete/1?type=email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"users",
+						"delete",
+						"1"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/users/searchByBirthday?birthDate=1982-01-01",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/security_api/users/searchByBirthday?birthDate=1982-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"users",
+						"searchByBirthday"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "1982-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/users/searchByFullName?fullName=Fay",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmF5YW4uV2Vpc3NuYXQ3MCIsImlhdCI6MTcwOTQxNDE5NSwiZXhwIjoxNzA5NDE1NjM1fQ.rtcQbRqtzXRhtaxeE35OR19cGiBR2QEslJgyeIVrtwI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/security_api/users/searchByFullName?fullName=Fay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"users",
+						"searchByFullName"
+					],
+					"query": [
+						{
+							"key": "fullName",
+							"value": "Fay"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/security_api/users/searchByEmail?email=Tamara46@gmail.com",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFbGFkaW8uSGVybWFubjI1IiwiaWF0IjoxNzA5NDQ3OTA3LCJleHAiOjE3MDk0NDkzNDd9.2zQM8_nJbL64tsEHK_OLJvHNr-3QdYkExCGCaC-3WsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/security_api/users/searchByEmail?email=Tamara46@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security_api",
+						"users",
+						"searchByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "Tamara46@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"security_user\",\r\n    \"dateOfBirth\": \"1999-02-01\",\r\n    \"fullName\": \"{{$randomFirstName}}\",\r\n    \"topBalance\": 1000.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Manuela99\",\r\n    \"password\": \"user\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/users/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"user\",\r\n    \"dateOfBirth\": \"1999-02-01\",\r\n    \"fullName\": \"{{$randomFirstName}}\",\r\n    \"topBalance\": 1000.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
