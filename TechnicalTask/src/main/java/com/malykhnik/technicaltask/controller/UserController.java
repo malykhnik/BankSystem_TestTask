@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class UserController {
             summary="создает нового пользователя в БД",
             description = "получает объект User, проверяет, чтобы с такими email, phone, username не было юзеров в БД" +
                     "и проверяет, что баланс не отрицательный. Далее проверяет, что не были переданы пустые телефон и емейл" +
-                    "потом присваивает все поля к объектам и отсылает объект в севрис"
+                    "потом присваивает все поля к объектам и отсылает объект в севрис. Делает encode пароля с помощью BCryptPasswordEncoder"
     )
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
@@ -43,6 +44,8 @@ public class UserController {
             throw new RuntimeException("email and phone should be not null");
         }
 
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
         user.setEmail(user.getEmail());
         user.setPhone(user.getPhone());
         user.setUsername(user.getUsername());

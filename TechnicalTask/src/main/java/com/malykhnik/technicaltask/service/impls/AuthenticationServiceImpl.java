@@ -40,7 +40,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .bankAccount(bankAccount)
                 .build();
 
-        userRepository.save(user);
+        if (userRepository.findByUsername(request.getUsername()) == null) {
+            userRepository.save(user);
+        }
 
         var jwt = jwtService.generateToken(user);
         return JwtAuthenticationResponse.builder().token(jwt).build();
