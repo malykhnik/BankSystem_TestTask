@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +46,7 @@ public class User implements UserDetails {
     private String fullName;
 
     @Column(name = "top_balance", nullable = false)
-    private double topBalance;
+    private BigDecimal topBalance;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bank_account_id")

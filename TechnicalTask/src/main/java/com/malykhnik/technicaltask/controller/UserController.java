@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Tag(name = "user_controller")
@@ -35,7 +36,7 @@ public class UserController {
         if (userService.findByEmail(user.getEmail()) != null ||
                 userService.findByPhone(user.getPhone()) != null ||
                 userService.findByUsername(user.getUsername()) != null ||
-                user.getTopBalance() < 0) {
+                user.getTopBalance().compareTo(BigDecimal.ZERO) < 0) {
             throw new RuntimeException("Wrong parametrs");
         }
         //не даем создать юзера без телефона и емейла

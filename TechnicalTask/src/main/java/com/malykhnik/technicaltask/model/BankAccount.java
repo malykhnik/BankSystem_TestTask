@@ -3,6 +3,8 @@ package com.malykhnik.technicaltask.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Data
 @Entity
 @Builder
@@ -16,6 +18,6 @@ public class BankAccount {
     private Long id;
 
     @Column(nullable = false)
-    private double balance;
+    private BigDecimal balance;
 
 }

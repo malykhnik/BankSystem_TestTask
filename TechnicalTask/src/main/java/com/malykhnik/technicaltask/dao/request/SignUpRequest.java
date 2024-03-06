@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -19,6 +20,6 @@ public class SignUpRequest {
     private String email;
     private Date dateOfBirth;
     private String fullName;
-    private double topBalance;
+    private BigDecimal topBalance;
     private BankAccount bankAccount;
 }

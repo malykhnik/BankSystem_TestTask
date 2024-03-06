@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -46,40 +47,40 @@ public class TransferMoneyServiceTest {
 
     @Test
     public void testTransferSuccessful() {
-        bankAccountFrom.setBalance(200.0);
-        bankAccountTo.setBalance(100.0);
+        bankAccountFrom.setBalance(BigDecimal.valueOf(200.0));
+        bankAccountTo.setBalance(BigDecimal.valueOf(100.0));
         userFrom.setBankAccount(bankAccountFrom);
         userTo.setBankAccount(bankAccountTo);
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(userFrom));
         when(userRepository.findById(2L)).thenReturn(Optional.of(userTo));
 
-        transferMoneyService.transfer(1L, 2L, 50.0);
+        transferMoneyService.transfer(1L, 2L, BigDecimal.valueOf(50.0));
 
-        assertEquals(150.0, userFrom.getBankAccount().getBalance(), 0.001);
-        assertEquals(150.0, userTo.getBankAccount().getBalance(), 0.001);
+        assertEquals(String.valueOf(150.0), userFrom.getBankAccount().getBalance(), 0.001);
+        assertEquals(String.valueOf(150.0), userTo.getBankAccount().getBalance(), 0.001);
     }
 
     @Test
     public void testTransferFromUserWithInsufficientMoney() {
-        bankAccountFrom.setBalance(50.0);
+        bankAccountFrom.setBalance(BigDecimal.valueOf(50.0));
         userFrom.setBankAccount(bankAccountFrom);
 
         //настройка мокито таким образом, чтобы он вернул userFrom не empty
         when(userRepository.findById(1L)).thenReturn(Optional.of(userFrom));
 
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, BigDecimal.valueOf(100.0)));
     }
 
     @Test
     public void testTransferWithMoneyLessThen0() {
-        bankAccountFrom.setBalance(50.0);
+        bankAccountFrom.setBalance(BigDecimal.valueOf(50.0));
         userFrom.setBankAccount(bankAccountFrom);
 
         //настройка мокито таким образом, чтобы он вернул userFrom не empty
         when(userRepository.findById(1L)).thenReturn(Optional.of(userFrom));
 
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, -20.0));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, BigDecimal.valueOf(-20.0)));
     }
 
     @Test
@@ -88,7 +89,7 @@ public class TransferMoneyServiceTest {
         when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
         //попытка перевода от empty юзера ко второму юзеру -> выброс Runtime Exception
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, BigDecimal.valueOf(100.0)));
     }
 
     @Test
@@ -97,14 +98,14 @@ public class TransferMoneyServiceTest {
         when(userRepository.findById(2L)).thenReturn(Optional.empty());
 
         //попытка перевода от not empty юзера коempty юзеру -> выброс Runtime Exception
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, 100.0));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, BigDecimal.valueOf(100.0)));
     }
 
     @Test
     public void testTransferWithNullParameters() {
         //выброс Runtime Exception при передаче нулевых параметров
         assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, 2L, null));
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, null, 51.0));
-        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(null, 2L, 51.0));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(1L, null, BigDecimal.valueOf(51.0)));
+        assertThrows(RuntimeException.class, () -> transferMoneyService.transfer(null, 2L, BigDecimal.valueOf(51.0)));
     }
 }

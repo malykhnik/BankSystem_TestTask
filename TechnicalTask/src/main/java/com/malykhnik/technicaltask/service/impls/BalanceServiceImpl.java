@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -28,16 +29,16 @@ public class BalanceServiceImpl implements BalanceService {
         List<User> users = userRepository.findAll();
         int countOfIncreasedBalances = 0;
         for (User user : users) {
-            double currentBalance = user.getBankAccount().getBalance();
-            if (currentBalance >= user.getTopBalance() * 2.07) {
+            BigDecimal currentBalance = user.getBankAccount().getBalance();
+            if (currentBalance.compareTo(user.getTopBalance().multiply(BigDecimal.valueOf(2.07))) >= 0) {
                 continue;
             }
-            double newBalance = currentBalance * 1.05;
-            if (newBalance < user.getTopBalance() * 2.07) {
+            BigDecimal newBalance = currentBalance.multiply(BigDecimal.valueOf(1.05));
+            if (newBalance.compareTo(user.getTopBalance().multiply(new BigDecimal("2.07"))) < 0) {
                 countOfIncreasedBalances += 1;
             }
-            if (newBalance > user.getTopBalance() * 2.07) {
-                newBalance = user.getTopBalance() * 2.07;
+            if (newBalance.compareTo(user.getTopBalance().multiply(new BigDecimal("2.07"))) > 0) {
+                newBalance = user.getTopBalance().multiply(new BigDecimal("2.07"));
             }
             user.getBankAccount().setBalance(newBalance);
             BankAccount bankAccount = user.getBankAccount();

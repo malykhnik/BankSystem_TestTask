@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 public class TransferRequest {
@@ -19,5 +21,5 @@ public class TransferRequest {
     private Long userToId;
     @NotNull
     @Positive
-    private Double money;
+    private BigDecimal money;
 }
