@@ -1,8 +1,8 @@
 package com.malykhnik.technicaltask.controller;
 
-import com.malykhnik.technicaltask.dao.request.SignInRequest;
-import com.malykhnik.technicaltask.dao.request.SignUpRequest;
-import com.malykhnik.technicaltask.dao.response.JwtAuthenticationResponse;
+import com.malykhnik.technicaltask.dto.request.SignInRequest;
+import com.malykhnik.technicaltask.dto.request.SignUpRequest;
+import com.malykhnik.technicaltask.dto.response.JwtAuthenticationResponse;
 import com.malykhnik.technicaltask.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

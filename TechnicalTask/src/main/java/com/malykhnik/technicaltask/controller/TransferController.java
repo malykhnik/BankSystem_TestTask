@@ -1,7 +1,7 @@
 package com.malykhnik.technicaltask.controller;
 
 
-import com.malykhnik.technicaltask.model.TransferRequest;
+import com.malykhnik.technicaltask.dto.TransferRequest;
 import com.malykhnik.technicaltask.service.TransferMoneyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.math.BigDecimal;
 
 
 @Tag(name = "transfer_controller")

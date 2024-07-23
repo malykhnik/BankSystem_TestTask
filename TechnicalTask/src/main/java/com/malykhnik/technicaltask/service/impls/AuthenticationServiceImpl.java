@@ -1,10 +1,10 @@
 package com.malykhnik.technicaltask.service.impls;
 
-import com.malykhnik.technicaltask.dao.request.SignInRequest;
-import com.malykhnik.technicaltask.dao.request.SignUpRequest;
-import com.malykhnik.technicaltask.dao.response.JwtAuthenticationResponse;
-import com.malykhnik.technicaltask.model.BankAccount;
-import com.malykhnik.technicaltask.model.User;
+import com.malykhnik.technicaltask.dto.request.SignInRequest;
+import com.malykhnik.technicaltask.dto.request.SignUpRequest;
+import com.malykhnik.technicaltask.dto.response.JwtAuthenticationResponse;
+import com.malykhnik.technicaltask.entity.BankAccount;
+import com.malykhnik.technicaltask.entity.User;
 import com.malykhnik.technicaltask.repository.UserRepository;
 import com.malykhnik.technicaltask.service.AuthenticationService;
 import com.malykhnik.technicaltask.service.JwtService;

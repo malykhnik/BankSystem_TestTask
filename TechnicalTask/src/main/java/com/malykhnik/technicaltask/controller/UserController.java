@@ -1,8 +1,7 @@
 package com.malykhnik.technicaltask.controller;
 
-import com.malykhnik.technicaltask.model.BankAccount;
-import com.malykhnik.technicaltask.model.User;
-import com.malykhnik.technicaltask.service.BalanceService;
+import com.malykhnik.technicaltask.entity.BankAccount;
+import com.malykhnik.technicaltask.entity.User;
 import com.malykhnik.technicaltask.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @Tag(name = "user_controller")
 @RestController

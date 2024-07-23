@@ -1,6 +1,6 @@
 package com.malykhnik.technicaltask.controller;
 
-import com.malykhnik.technicaltask.model.User;
+import com.malykhnik.technicaltask.entity.User;
 import com.malykhnik.technicaltask.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -71,15 +71,10 @@ public class UserSecurityController {
         logger.info("Update user phone - {} for user with username: {}", user.getPhone(), user.getUsername());
 
         //если такого телефона ни у кого нет, то обновить у пользователя номер телефона
-        if (user != null) {
-            if (userService.findByPhone(phone) == null) {
-                user.setPhone(phone);
-                logger.info("User get new phone - {}", phone);
-                userService.saveUser(user);
-            }
-        } else {
-            logger.error("User does not exist");
-            throw new RuntimeException("User does not exist");
+        if (userService.findByPhone(phone) == null) {
+            user.setPhone(phone);
+            logger.info("User get new phone - {}", phone);
+            userService.saveUser(user);
         }
     }
 
@@ -95,15 +90,10 @@ public class UserSecurityController {
         logger.info("Update user email - {} for user with username: {}", user.getEmail(), user.getUsername());
 
         //если такого email ни у кого нет, то обновить у пользователя email
-        if (user != null) {
-            if (userService.findByEmail(email) == null) {
-                user.setEmail(email);
-                logger.info("User get new email - {}", email);
-                userService.saveUser(user);
-            }
-        } else {
-            logger.error("User does not exist");
-            throw new RuntimeException("User does not exist");
+        if (userService.findByEmail(email) == null) {
+            user.setEmail(email);
+            logger.info("User get new email - {}", email);
+            userService.saveUser(user);
         }
     }
 

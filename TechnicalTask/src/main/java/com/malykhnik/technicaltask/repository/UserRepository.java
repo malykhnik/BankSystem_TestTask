@@ -1,6 +1,6 @@
 package com.malykhnik.technicaltask.repository;
 
-import com.malykhnik.technicaltask.model.User;
+import com.malykhnik.technicaltask.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

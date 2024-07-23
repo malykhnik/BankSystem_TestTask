@@ -1,6 +1,6 @@
-package com.malykhnik.technicaltask.dao.request;
+package com.malykhnik.technicaltask.dto.request;
 
-import com.malykhnik.technicaltask.model.BankAccount;
+import com.malykhnik.technicaltask.entity.BankAccount;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

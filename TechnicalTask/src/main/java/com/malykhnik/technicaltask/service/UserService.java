@@ -1,6 +1,6 @@
 package com.malykhnik.technicaltask.service;
 
-import com.malykhnik.technicaltask.model.User;
+import com.malykhnik.technicaltask.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Date;

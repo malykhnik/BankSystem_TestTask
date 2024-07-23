@@ -1,4 +1,4 @@
-package com.malykhnik.technicaltask.model;
+package com.malykhnik.technicaltask.entity;
 
 
 import jakarta.persistence.*;

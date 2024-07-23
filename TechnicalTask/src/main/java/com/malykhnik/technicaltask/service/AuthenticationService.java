@@ -1,8 +1,8 @@
 package com.malykhnik.technicaltask.service;
 
-import com.malykhnik.technicaltask.dao.request.SignInRequest;
-import com.malykhnik.technicaltask.dao.request.SignUpRequest;
-import com.malykhnik.technicaltask.dao.response.JwtAuthenticationResponse;
+import com.malykhnik.technicaltask.dto.request.SignInRequest;
+import com.malykhnik.technicaltask.dto.request.SignUpRequest;
+import com.malykhnik.technicaltask.dto.response.JwtAuthenticationResponse;
 
 public interface AuthenticationService {
     JwtAuthenticationResponse signup(SignUpRequest request);

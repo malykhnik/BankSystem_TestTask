@@ -1,4 +1,4 @@
-package com.malykhnik.technicaltask.dao.response;
+package com.malykhnik.technicaltask.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
